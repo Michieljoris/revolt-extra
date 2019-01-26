@@ -1,4 +1,4 @@
-(ns ^{:clojure.tools.namespace.repl/load false} revolt.plugins.nrepl-piggyback
+(ns ^{:clojure.tools.namespace.repl/load false} revolt.plugins.nrepl-piggieback
   (:require [cider.nrepl]
             [io.aviso.ansi]
             [nrepl.server :as server]
@@ -13,7 +13,7 @@
   [config]
   (reify Plugin
     (activate [this ctx]
-      (println "Starting nREPL server (with piggyback, cider and refactor middleware)..")
+      (println "Starting nREPL server (with piggieback, cider and refactor middleware)..")
 
       (let [handler (apply server/default-handler
                            (conj (map #'cider.nrepl/resolve-or-fail cider.nrepl/cider-middleware)
@@ -32,5 +32,5 @@
         (log/debug "closing nrepl")
         (nrepl.server/stop-server ret)))))
 
-(defmethod create-plugin :revolt.plugin/nrepl-piggyback [_ config]
+(defmethod create-plugin :revolt.plugin/nrepl-piggieback [_ config]
   (init-plugin config))
